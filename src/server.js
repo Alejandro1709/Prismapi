@@ -1,4 +1,5 @@
 import express from 'express'
+import morgan from 'morgan'
 import { PrismaClient } from '@prisma/client'
 
 const app = express()
@@ -6,6 +7,7 @@ const app = express()
 const prisma = new PrismaClient()
 
 app.use(express.json())
+app.use(morgan('dev'))
 
 app.get('/', (_req, res) => {
   res.status(200).json({ message: 'Hello World' })
